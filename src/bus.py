@@ -29,8 +29,10 @@ class Bus:
     empty = delegate("passengers", "clear")
 
     def pick_up_from_stop(self, bus_stop):
-        new_passengers = bus_stop.queue
-        for person in new_passengers:
-            self.pick_up(person)
-        bus_stop.clear()
-        
+        # new_passengers = bus_stop.queue
+        # for person in new_passengers:
+        #     self.pick_up(person)
+        # bus_stop.clear()
+        bus_queue = bus_stop.queue
+        while len(bus_queue) > 0:
+            self.pick_up(bus_queue.pop())
