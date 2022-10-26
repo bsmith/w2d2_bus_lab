@@ -1,4 +1,5 @@
 from .passenger_set import PassengerSet
+from .delegatetools import delegate
 
 class Bus:
     def __init__(self, route_number, destination):
@@ -12,8 +13,9 @@ class Bus:
     def passenger_count(self):
         return self.passengers.count_passengers()
 
-    def pick_up(self, person):
-        self.passengers.add_to_set(person)
+    # def pick_up(self, person):
+    #     self.passengers.add_to_set(person)
+    pick_up = delegate("passengers", "add_to_set")
 
     def drop_off(self, person):
         self.passengers.remove_from_set(person)
