@@ -1,4 +1,8 @@
+from dataclasses import dataclass
+
+# We set this an immutable because we put them in a set
+@dataclass(frozen = True)
 class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+    """Class for tracking a person making a bus journey"""
+    name: str
+    age: int
